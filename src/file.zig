@@ -17,7 +17,7 @@ pub fn parseFile(
     comptime T: type,
     comptime parser: fn ([]const u8) anyerror!T,
     comptime file: []const u8,
-    delimiter: []const u8,
+    comptime delimiter: []const u8,
 ) FileError![]const T {
     const input = comptime std.mem.trim(u8, @embedFile(file), "\n");
     return parseInput(T, parser, input, delimiter, file_allocator);
